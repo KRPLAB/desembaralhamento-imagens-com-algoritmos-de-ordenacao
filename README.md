@@ -21,3 +21,28 @@ gcc -Wall -Werror -Wextra -pedantic main.c -o main -lSDL2 -lSDL2_ttf -I/usr/incl
 
 Algumas observações:
 1. Importante observar os defines WIDTH e HEIGHT no cabeçalho do programa e também são iguais aos do programa extrai.c e se o arquivo .txt que está sendo aberto e lido é aquele criado após a execução do ./extrai.
+
+## Bibliotecas
+Para rodar o projeto são necessárias as bibliotecas padrões da linguagem C tais como: stdio.h, stdlib.h, string.h e time.h.
+
+Bibliotecas extras que devem ser instaladas são: SDL2/SDL.h e SDL2/SDL_ttf.h.
+
+Para instalar elas em sistemas Linux baseados em Debian (mint, ubuntu):
+```
+sudo apt-get install libsdl2-dev
+
+sudo apt-get install libsdl2-ttf-dev
+
+```
+
+Para instalar elas em sistemas Linux baseados no Red Hat (fedora):
+```
+sudo dnf install SDL2-devel
+
+sudo dnf install SDL2_ttf-devel
+
+```
+
+
+
+
