@@ -1,5 +1,5 @@
 /* Este programa extrai os dados de cada pixel de uma imagem
- * referentes as cores em escala RGB e os imprime em forma de 
+ * referentes às cores em escala RGB e os imprime em forma de
  * um vetor bidimensional (matriz) */
 
 #include <stdio.h>
@@ -40,10 +40,10 @@ int main()
 {
     SDL_Init(SDL_INIT_VIDEO);
 
-    // Carregar imagem de um arquivo BMP
+    /* Carregar imagem de um arquivo BMP */
     SDL_Surface *imageSurface = SDL_LoadBMP("mona.bmp");
 
-    // Verificar se a imagem foi carregada com sucesso
+    /* Verificar se a imagem foi carregada com sucesso */
     if (!imageSurface)
     {
         fprintf(stderr, "Erro ao carregar imagem: %s\n", SDL_GetError());
@@ -53,10 +53,10 @@ int main()
 
     RGB rgbValues[HEIGHT][WIDTH];
 
-    // Extrair os valores RGB dos pixels para a matriz
+    /* Extrair os valores RGB dos pixels para a matriz */
     extractRGBValues(imageSurface, rgbValues);
 
-    // Exibir os valores RGB da matriz (apenas para visualização)
+    /* Exibir os valores RGB da matriz (apenas para visualização) */
     for (int i = 0; i < HEIGHT; i++)
     {
         for (int j = 0; j < WIDTH; j++)
@@ -66,7 +66,7 @@ int main()
         printf("\n");
     }
 
-    // Liberar recursos
+    /* Liberar recursos */
     SDL_FreeSurface(imageSurface);
     SDL_Quit();
 
