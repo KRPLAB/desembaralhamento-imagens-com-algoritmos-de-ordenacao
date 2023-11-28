@@ -175,6 +175,7 @@ int main()
         return 0;
     }
 
+    // trocar pelo arquivo criado ao rodar o programa ./extrai
     if (!(arquivo = fopen("matriz.txt", "r")))
     {
         fprintf(stderr, "Erro ao abrir o arquivo.\n");
