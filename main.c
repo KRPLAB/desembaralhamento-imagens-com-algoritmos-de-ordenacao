@@ -5,8 +5,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-#define HEIGHT 100
-#define WIDTH 100
+#define HEIGHT 250
+#define WIDTH 250
 
 struct imagemVetor
 {
@@ -42,35 +42,35 @@ void renderizar(SDL_Renderer *renderer, struct imagemVetor *vetor, TTF_Font *fon
     SDL_Surface *textSurface = TTF_RenderText_Solid(font, timeText, textColor);
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
-    /* Definir a posiçao do texto */
+    /* Definir a posição do texto */
     SDL_Rect textRect = {10, 10, textSurface->w, textSurface->h};
 
     /* Renderizar o texto */
     SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
-    /* Limpar recursos da textura e superficie */
+    /* Limpar recursos da textura e superfície */
     SDL_DestroyTexture(textTexture);
     SDL_FreeSurface(textSurface);
 
     SDL_RenderPresent(renderer);
 }
 
-void merge(struct imagemVetor *v, int left, int mid, int right, SDL_Renderer *renderer, Uint32 startTime, TTF_Font *font)
+void merge(struct imagemVetor *v, int left, int mid, int right)
 {
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    /* Criaçao de arrays temporarios */
+    /* Criação de arrays temporários */
     struct imagemVetor L[n1], R[n2];
 
-    /* Copiar dados para arrays temporarios L[] e R[] */
+    /* Copiar dados para arrays temporários L[] e R[] */
     for (i = 0; i < n1; i++)
         L[i] = v[left + i];
     for (j = 0; j < n2; j++)
         R[j] = v[mid + 1 + j];
 
-    /* Merge dos arrays temporarios de volta para v[left..right] */
+    /* Merge dos arrays temporários de volta para v[left..right] */
     i = 0;
     j = 0;
     k = left;
@@ -88,12 +88,6 @@ void merge(struct imagemVetor *v, int left, int mid, int right, SDL_Renderer *re
             j++;
         }
         k++;
-
-        /* Renderizar após cada mesclagem */
-        renderizar(renderer, v, font, startTime);
-
-        /* Aguardar um curto periodo para dar tempo ao SDL de exibir a imagem */
-        SDL_Delay(0); /* Ajuste conforme necessario */
     }
 
     /* Copiar os elementos restantes de L[], se houver algum */
@@ -102,12 +96,6 @@ void merge(struct imagemVetor *v, int left, int mid, int right, SDL_Renderer *re
         v[k] = L[i];
         i++;
         k++;
-
-        /* Renderizar após cada mesclagem */
-        renderizar(renderer, v, font, startTime);
-
-        /* Aguardar um curto periodo para dar tempo ao SDL de exibir a imagem */
-        SDL_Delay(0); /* Ajuste conforme necessario */
     }
 
     /* Copiar os elementos restantes de R[], se houver algum */
@@ -116,12 +104,6 @@ void merge(struct imagemVetor *v, int left, int mid, int right, SDL_Renderer *re
         v[k] = R[j];
         j++;
         k++;
-
-        /* Renderizar após cada mesclagem */
-        renderizar(renderer, v, font, startTime);
-
-        /* Aguardar um curto periodo para dar tempo ao SDL de exibir a imagem */
-        SDL_Delay(0); /* Ajuste conforme necessario */
     }
 }
 
@@ -138,7 +120,13 @@ void mergeSort(struct imagemVetor *v, int left, int right, SDL_Renderer *rendere
         mergeSort(v, mid + 1, right, renderer, startTime, font);
 
         /* Mesclar as metades ordenadas */
-        merge(v, left, mid, right, renderer, startTime, font);
+        merge(v, left, mid, right);
+
+        /* Renderizar após cada etapa de merge */
+        renderizar(renderer, v, font, startTime);
+
+        /* Aguardar um curto período para dar tempo ao SDL de exibir a imagem */
+        SDL_Delay(0); /* Ajuste conforme necessário */
     }
 }
 
@@ -234,13 +222,13 @@ int main()
     /* Iniciar o timer */
     Uint32 startTime = SDL_GetTicks();
 
-    /* Ordenar o vetor e renderizar */
+    /* Ordenar o vetor e renderizar ao final */
     mergeSort(v2, 0, tamanho - 1, renderer, startTime, font);
 
-    /* Aguardar por 5 segundos após a ordenaçao */
+    /* Aguardar por 5 segundos após a ordenação */
     SDL_Delay(5000);
 
-    /* Renderizar uma ultima vez antes de fechar a janela */
+    /* Renderizar uma última vez antes de fechar a janela */
     renderizar(renderer, v2, font, startTime);
 
     SDL_DestroyRenderer(renderer);
