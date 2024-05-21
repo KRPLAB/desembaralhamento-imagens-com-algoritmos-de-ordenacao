@@ -2,7 +2,7 @@
 Este projeto consiste na aplicação dos algoritmos Insertion Sort, Selection Sort, Merge Sort, Quick Sort e Heap Sort para desembaralhar uma imagem embaralhada.
 
 <video width="710" height="399" controls>
-  <source src="video.mp4" type="video/mp4">
+  <source src="[video.mp4](https://www.youtube.com/watch?v=32OsnJqrPB4)" type="video/mp4">
   Seu navegador não suporta o elemento de vídeo.
 </video>
 
