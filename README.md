@@ -3,6 +3,7 @@ Este projeto consiste na aplicação dos algoritmos Insertion Sort, Selection So
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7137402343850938372?compact=1" height="399" width="710" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
 
+
 ## Processamento da imagem
 A extensão de imagem escolhida é .bmp. Para processa-la é utilizado o programa "extrai.c" com a saída redirecionada para um arquivo .txt. O programa utiliza a biblioteca SDLS2 para abrir o arquivo de imagem, percorrer sua superfície e extrair o valor de cada pixel para uma matriz de dimensões iguais às da imagem. 
 Para compilar deve-se ter a biblioteca SDLS2 instalada com o comando:
