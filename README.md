@@ -1,10 +1,6 @@
 # Desembaralhamento de imagem com algoritmos de ordenação
 Este projeto consiste na aplicação dos algoritmos Insertion Sort, Selection Sort, Merge Sort, Quick Sort e Heap Sort para desembaralhar uma imagem embaralhada.
 
-<video width="710" height="399" controls>
-  <source src="[video.mp4](https://www.youtube.com/watch?v=32OsnJqrPB4)" type="video/mp4">
-  Seu navegador não suporta o elemento de vídeo.
-</video>
 
 ## Processamento da imagem
 A extensão de imagem escolhida é .bmp. Para processa-la é utilizado o programa "extrai.c" com a saída redirecionada para um arquivo .txt. O programa utiliza a biblioteca SDLS2 para abrir o arquivo de imagem, percorrer sua superfície e extrair o valor de cada pixel para uma matriz de dimensões iguais às da imagem. 
